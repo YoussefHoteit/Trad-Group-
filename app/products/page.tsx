@@ -4,8 +4,7 @@ import { categories, products } from "@/data/catalog";
 
 export const metadata: Metadata = { title: "Products", description: "Browse the Trad Group lighting and electrical product catalog." };
 
-export default function ProductsPage({ searchParams }: { searchParams: { category?: string } }) {
-  const initial = categories.some((category) => category.slug === searchParams.category) ? searchParams.category! : "all";
+export default function ProductsPage() {
   return (
     <>
       <section className="innerHero">
@@ -18,7 +17,7 @@ export default function ProductsPage({ searchParams }: { searchParams: { categor
           <div className="heroIndex"><strong>{categories.length}</strong><span>categories</span></div>
         </div>
       </section>
-      <div className="pageShell catalogPage"><ProductBrowser initialCategory={initial} /></div>
+      <div className="pageShell catalogPage"><ProductBrowser /></div>
     </>
   );
 }
