@@ -1,14 +1,19 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { categories, products } from "@/data/catalog";
 import { ProductCard } from "./ProductCard";
 import { FilterIcon, SearchIcon } from "./Icons";
 
-export function ProductBrowser({ initialCategory = "all" }: { initialCategory?: string }) {
+export function ProductBrowser() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState(initialCategory);
+  const [category, setCategory] = useState("all");
   const [mobileFilters, setMobileFilters] = useState(false);
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("category");
+    if (requested && categories.some((item) => item.slug === requested)) setCategory(requested);
+  }, []);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
