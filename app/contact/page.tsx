@@ -4,7 +4,7 @@ import { company } from "@/data/company";
 
 export const metadata: Metadata = { title: "Contact", description: "Request a quote from Trad Group." };
 
-export default function ContactPage({ searchParams }: { searchParams: { product?: string } }) {
+export default function ContactPage() {
   return (
     <>
       <section className="innerHero contactHero">
@@ -25,7 +25,7 @@ export default function ContactPage({ searchParams }: { searchParams: { product?
             <div><span>Address</span><strong>{company.address || "Add showroom / office address"}</strong></div>
           </div>
         </div>
-        <QuoteForm product={searchParams.product} />
+        <QuoteForm />
       </section>
     </>
   );
